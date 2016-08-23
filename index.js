@@ -1,6 +1,7 @@
 function UUID() {
-  var urlObj = window.URL.createObjectURL(new Blob([]));
-  var uuid = urlObj.match(/\/\/.*\/(.*)/)[1];
-  window.URL.revokeObjectURL(urlObj);
-  return uuid;
+    var objectURL = window.URL || window.webkitURL
+    var urlObj = objectURL.createObjectURL(new Blob([]));
+    var uuid = urlObj.match(/\/\/.*\/(.*)/)[1];
+    objectURL.revokeObjectURL(urlObj);
+    return uuid;
 }
